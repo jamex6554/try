@@ -17,141 +17,35 @@
     void Sudoku::GiveQuestion()
 
     {
-
-        srand(time(NULL));
-
-        int i,j;
-
-        int arrays[9][9];
-
-        for (i=0; i<9; i++)
-
-        {
-
-            for(j=0;j<9;j++)
-
-            {
-
-                arrays[i][j]=0;
-
-            }
-
+    int i,j,k,sudoku[12][12]={8,1,2,7,5,3,-1,-1,-1,4,6,9,
+        9,4,3,6,8,2,-1,-1,-1,1,5,7,
+        6,7,5,4,9,1,-1,-1,-1,8,2,3,
+        -1,-1,-1,9,7,4,3,6,8,2,1,5,
+        -1,-1,-1,5,2,6,9,1,7,3,8,4,
+        -1,-1,-1,3,1,8,4,5,2,9,7,6,
+        1,5,4,2,3,7,8,9,6,-1,-1,-1,
+        3,6,9,8,4,5,7,2,1,-1,-1,-1,
+        2,8,7,1,6,9,5,3,4,-1,-1,-1,
+        5,2,1,-1,-1,-1,6,4,9,7,3,8,
+        4,3,8,-1,-1,-1,1,7,5,6,9,2,
+        7,9,6,-1,-1,-1,2,8,3,5,4,1};
+    for(k=0;k<35;k++){
+        i=(rand()%12);
+        j=(rand()%12);
+        if(-1!=sudoku[i][j]){
+            sudoku[i][j]=0;
         }
-
-
-
-
-
-        for(i=0;i<9;i++)
-
-        {
-
-            arrays[0][i]=(rand()%9)+1;
-
-            for(j=0;j<i;j++)
-
-            {
-
-                if(arrays[0][j]==arrays[0][i])
-
-                {
-
-                    i=i-1;
-
-                }
-
-            }
-
-        }
-
-
-
-        for(i=0;i<9;i++){
-
-            arrays[3][i]=arrays[0][(i+1)%3+(i/3)*3];
-
-
-
-        }
-
-        for (i=0; i<9; i++) {
-
-            arrays[6][i]=arrays[3][(i+1)%3+(i/3)*3];
-
-        }
-
-        for(i=0;i<9;i++){
-
-            arrays[1][(i+3)%9]=arrays[0][i];
-
-        }
-
-        for(i=0;i<9;i++){
-
-            arrays[2][(i+3)%9]=arrays[1][i];
-
-        }
-
-        for(i=0;i<9;i++){
-
-            arrays[4][(i+3)%9]=arrays[3][i];
-
-        }
-
-        for(i=0;i<9;i++){
-
-            arrays[5][(i+3)%9]=arrays[4][i];
-
-        }
-
-        for(i=0;i<9;i++){
-
-            arrays[7][(i+3)%9]=arrays[6][i];
-
-        }
-
-        for(i=0;i<9;i++){
-
-            arrays[8][(i+3)%9]=arrays[7][i];
-
-        }
-
-        for (i=0; i<30; i++) {
-
-            arrays[(rand()%9)+1][(rand()%9)+1]=0;
-
-        }
-
-
-
-        for(i=0;i<3;i++){
-
-            printf("%d %d %d %d %d %d -1 -1 -1 %d %d %d\n",arrays[0][3*i],arrays[0][3*i+1],arrays[0][3*i+2],arrays[1][3*i],arrays[1][3*i+1],arrays[1][3*i+2],arrays[2][3*i],arrays[2][3*i+1],arrays[2][3*i+2]);
-
-        }
-
-        for(i=0;i<3;i++){
-
-            printf("-1 -1 -1 %d %d %d %d %d %d %d %d %d\n",arrays[4][3*i],arrays[4][3*i+1],arrays[4][3*i+2],arrays[5][3*i],arrays[5][3*i+1],arrays[5][3*i+2],arrays[3][3*i],arrays[3][3*i+1],arrays[3][3*i+2]);
-
-        }
-
-        for(i=0;i<3;i++){
-
-            printf(" %d %d %d %d %d %d %d %d %d -1 -1 -1\n",arrays[3][3*i],arrays[3][3*i+1],arrays[3][3*i+2],arrays[7][3*i],arrays[7][3*i+1],arrays[7][3*i+2],arrays[8][3*i],arrays[8][3*i+1],arrays[8][3*i+2]);
-
-        }
-
-        for(i=0;i<3;i++){
-
-            printf(" %d %d %d -1 -1 -1 %d %d %d %d %d %d\n",arrays[6][3*i],arrays[6][3*i+1],arrays[6][3*i+2],arrays[2][3*i],arrays[2][3*i+1],arrays[2][3*i+2],arrays[7][3*i],arrays[7][3*i+1],arrays[7][3*i+2]);
-
-        }
-
+        else
+            k--;
     }
 
-
-
+    for(i=0;i<12;i++){
+        for(j=0;j<12;j++){
+            cout<<" "<<sudoku[i][j];
+        }
+        cout<<endl;
+    }
+}
     void Sudoku::ReadIn()
 
     {
